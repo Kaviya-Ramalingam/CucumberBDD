@@ -18,12 +18,6 @@ public class ConfigReader {
 
 	}
 
-	public static String getUrl() {
-		String url = prop.getProperty("url");
-		return url;
-
-	}
-
 	public static String getProperty(String key) {
 		String value = prop.getProperty(key);
 		if (value == null) {

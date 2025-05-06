@@ -9,7 +9,10 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverFactory {
 
-	public static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+	//Encapsulation-Mark driverThreadLocal as private to prevent external modification
+    //use static with ThreadLocal so that all threads and all static methods can access the same thread-local variable,
+	//while each thread still gets its own independent value
+	private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
 	public static WebDriver browserSetup(String browser) {
 
@@ -19,13 +22,13 @@ public class DriverFactory {
 		default:
 			ChromeOptions co = new ChromeOptions();
 			co.addArguments("--headless");
-			driverThreadLocal.set(new ChromeDriver());
+			driverThreadLocal.set(new ChromeDriver(co));
 			break;
 
 		case "firefox":
 			FirefoxOptions fo = new FirefoxOptions();
 			fo.addArguments("--headless");
-			driverThreadLocal.set(new FirefoxDriver());
+			driverThreadLocal.set(new FirefoxDriver(fo));
 			break;
 
 		case "safari":
