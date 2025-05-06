@@ -9,7 +9,8 @@ import io.cucumber.testng.CucumberOptions;
                  glue = { "DsAlgo.StepDefinitions"},//if hooks are in same package as step definition, no need to explicitly add them.
                  monochrome = true, //formats console output for readability
                  dryRun = true, //checks unimplemented steps
-                 plugin = { "pretty", "html:target/cucumber-reports/reports.html" })
+                 plugin = { "pretty", "html:target/cucumber-reports/reports.html","pretty",
+                		   "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" })
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
