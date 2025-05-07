@@ -1,0 +1,42 @@
+2025-05-06 15:14:52 DEBUG - suiteXmlPath: "/var/folders/9x/bfy4ys6j4vnc7bt66wb2wydm0000gn/T/testng-eclipse--1939707989/testng-customsuite.xml"
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 14 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2025-05-06 15:14:52 INFO  - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2025-05-06 15:14:52 INFO  - [TestNG] Running:
+  /private/var/folders/9x/bfy4ys6j4vnc7bt66wb2wydm0000gn/T/testng-eclipse--1939707989/testng-customsuite.xml
+
+2025-05-06 15:14:52 INFO  - [Utils] DynamicGraphHelper.createDynamicGraph() took 5 ms.
+2025-05-06 15:14:53 WARN  - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.reporters.jq.Main@5bbc9f97: 38 ms
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.reporters.FailedReporter@7dac3fd8: 1 ms
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.reporters.XMLReporter@c41709a: 9 ms
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@29539e36: 5 ms
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@32f61a31: 0 ms
+2025-05-06 15:14:53 INFO  - [TestNG] Time taken by org.testng.internal.ExitCodeListener@f5c79a6: 0 ms
