@@ -1,11 +1,13 @@
+@HomePage
 Feature: Home Page validation
 
 Background: 
     Given The user opens the browser, enters the DS Algo portal
     When The user clicks the Get Started button
 
-@HomePageTest1 @positiveTestCases
+@HomePage_01 @positive
  Scenario: Verify that user is able to view options for Data Structures dropdown on home page without Sign in
+    Given The user is on the Home page
     When The user clicks the Data Structures dropdown
     Then The user should see the following options in the dropdown:
     | Arrays      |
@@ -15,8 +17,9 @@ Background:
     | Tree        |
     | Graph       |
     
-@HomePageWarning @negativeTestCases
+@HomePage_02 @negative
  Scenario Outline: Verify warning message when selecting "<DataStructure>" from the dropdown without Sign in
+  Given The user is on the Home page
     When The user selects "<DataStructure>" from the drop down without Sign in.
     Then The user should able to see an warning message "<WarningMessage>"
 
@@ -30,8 +33,9 @@ Background:
     | Graph        | You are not logged in    |
     
     
-@HomePageGetStartedWarning @negativeTestCases
+@HomePage_03 @negative
  Scenario Outline: Verify warning message on clicking Get Started button for "<Section>" on the homepage without Sign in
+  Given The user is on the Home page
    When The user clicks Get Started buttons of "<Section>" on the homepage without Sign in
    Then The user should able to see an warning message "<WarningMessage>"
 
