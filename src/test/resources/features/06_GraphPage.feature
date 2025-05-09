@@ -28,14 +28,14 @@ Feature: Graph Module Functionality in dsAlgo Portal
   Scenario: User runs invalid Python code in Try Editor for Graph page
     Given The user is on the "Graph" page
     When The user clicks the "Try Here" button
-    And The user clicks the Run button after entering invalid phython code
+    And The user clicks the Run button after entering invalid python code
     Then The user should see an error message in an alert window
 
 @GraphPage_05 @positive
   Scenario: User runs valid Python code in Try Editor for Graph page
     Given The user is on the "Graph" page
     When The user clicks the "Try Here" button
-    And The user clicks the Run button after entering valid phython code
+    And The user clicks the Run button after entering valid python code
     Then The user should see the output in the console
 
 @GraphPage_06 @positive
@@ -71,7 +71,7 @@ Feature: Graph Module Functionality in dsAlgo Portal
     Given The user is on the "Graph" page
     When The user clicks the "Graph Representations" page
     And The user clicks the "Try Here" button
-    And The user clicks the Run button after entering invalid phython code
+    And The user clicks the Run button after entering invalid python code
     Then The user should see an error message in an alert window
 
 @GraphPage_11 @positive
@@ -79,7 +79,7 @@ Feature: Graph Module Functionality in dsAlgo Portal
     Given The user is on the "Graph" page
     When The user clicks the "Graph Representations" page
     And The user clicks the "Try Here" button
-    And The user clicks the Run button after entering valid phython code
+    And The user clicks the Run button after entering valid python code
     Then The user should see the output in the console
 
 @GraphPage_12 @positive
@@ -87,4 +87,4 @@ Feature: Graph Module Functionality in dsAlgo Portal
     Given The user is on the "Graph" page
     When The user clicks the "Graph Representations" page
     And The user clicks the "Practice Questions" button
-    Then The user should be redirected to the blank Practice Questions page
+    Then The user should be redirected to the blank Practice page
