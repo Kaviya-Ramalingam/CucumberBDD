@@ -27,7 +27,7 @@ public class ExcelReader {
 		this.path = path;
 	}
 
-	public ArrayList<String> getData(String sheetName, String testCaseIdName) throws IOException {
+	public ArrayList<String> getData(String sheetName, String TestcaseName) throws IOException {
 		// Open the Excel file
 		fis = new FileInputStream(path);
 		workbook = new XSSFWorkbook(fis);
@@ -64,8 +64,8 @@ public class ExcelReader {
 				while (rows.hasNext()) {
 					Row r = rows.next();
 					// Check if this row contains the matching testCaseId
-					if (r.getCell(column).getStringCellValue().equalsIgnoreCase(testCaseIdName)) {
-						logger.debug("Found matching test case ID: {}", testCaseIdName);
+					if (r.getCell(column).getStringCellValue().equalsIgnoreCase(TestcaseName)) {
+						logger.debug("Found matching test case ID: {}", TestcaseName);
 						// Read all cells in the matched row
 						Iterator<Cell> ce = r.cellIterator();
 						while (ce.hasNext()) {
@@ -77,13 +77,13 @@ public class ExcelReader {
 							}
 						}
 					} else {
-						logger.warn("Test case ID '{}' not found in row {}", testCaseIdName, r.getRowNum());
+						logger.warn("Test case ID '{}' not found in row {}", TestcaseName, r.getRowNum());
 					}
 				}
 			}
 		}
 
-		logger.info("Data for TestCaseID: " + testCaseIdName);
+		logger.info("Data for TestCaseID: " + TestcaseName);
 		for (String value : data) {
 			System.out.println(value);
 		}
