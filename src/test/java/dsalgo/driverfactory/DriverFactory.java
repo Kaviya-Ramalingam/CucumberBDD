@@ -9,12 +9,26 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverFactory {
 
-	//Encapsulation-Mark driverThreadLocal as private to prevent external modification
-    //use static with ThreadLocal so that all threads and all static methods can access the same thread-local variable,
-	//while each thread still gets its own independent value
+	// Encapsulation-Mark driverThreadLocal as private to prevent external
+	// modification
+	// use static with ThreadLocal so that all threads and all static methods can
+	// access the same thread-local variable,
+	// while each thread still gets its own independent value
 	private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+	private static ThreadLocal<String> browserNameThreadLocal = new ThreadLocal<>();
+
+	public static WebDriver getdriver() {
+		return driverThreadLocal.get();
+
+	}
+
+	public static String getBrowserName() {
+		return browserNameThreadLocal.get();
+	}
 
 	public static WebDriver browserSetup(String browser) {
+		// Store the browser name for this thread
+		browserNameThreadLocal.set(browser);
 
 		switch (browser.toLowerCase()) {
 
@@ -22,7 +36,7 @@ public class DriverFactory {
 		default:
 			ChromeOptions co = new ChromeOptions();
 			co.addArguments("--headless");
-			driverThreadLocal.set(new ChromeDriver(co));
+			driverThreadLocal.set(new ChromeDriver());
 			break;
 
 		case "firefox":
@@ -40,17 +54,12 @@ public class DriverFactory {
 		return getdriver();
 	}
 
-	public static WebDriver getdriver() {
-		return driverThreadLocal.get();
-
-	}
-
 	public static void cleanupDriver() {
 		WebDriver driver = driverThreadLocal.get();
 		if (driver != null) {
 			driver.quit();
 			driverThreadLocal.remove();
 		}
-
+		browserNameThreadLocal.remove();
 	}
 }

@@ -24,13 +24,13 @@ public class Hooks {
 
 		ConfigReader.ReadDataFromConfig();
 		String browser = ConfigReader.getProperty("browser");
-		String url = ConfigReader.getProperty("url");
+		//String url = ConfigReader.getProperty("url");
 		DriverFactory.browserSetup(browser);
 		logger.info("Hook: Initializing driver for browser :" + browser);
 
 		driver = DriverFactory.getdriver();
-		driver.get(url);
-		logger.info("hooks: url opened successfully:" + url);
+		//driver.get(url);
+		//logger.info("hooks: url opened successfully:" + url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
