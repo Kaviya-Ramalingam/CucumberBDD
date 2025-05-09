@@ -5,10 +5,11 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = { "src/test/resources/features" }, 
-                 glue = { "DsAlgo.StepDefinitions"},//if hooks are in same package as step definition, no need to explicitly add them.
+@CucumberOptions(tags = "@DsAlgoPortal_02",features = { "src/test/resources/features" }, 
+                 glue = { "dsalgo.stepdefinitions","dsalgo.applicationhooks"},//if hooks are in same package as step definition, 
+                 //no need to explicitly add them.or else add package name of hooks 
                  monochrome = true, //formats console output for readability
-                 dryRun = true, //checks unimplemented steps
+                 dryRun = false, //checks unimplemented steps
                  plugin = { "pretty", "html:target/cucumber-reports/reports.html",
                 		   "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" })
 

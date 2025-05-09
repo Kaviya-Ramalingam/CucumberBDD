@@ -5,17 +5,17 @@ import dsalgo.pageobjects.PageObjectManager;
 
 public class TextContext {
 
-	public static DriverFactory driverFactory;
-	public static PageObjectManager pageObjectManager;
+	private DriverFactory driverFactory;
+	private PageObjectManager pageObjectManager;
 
 
 	// Constructor injection for better testability and DI support
 	public TextContext() {
 		this.driverFactory = new DriverFactory();
-		
+		pageObjectManager = new PageObjectManager(driverFactory.getdriver());//initialising pageobjectmanager with driver
 	}
 
-	public static DriverFactory getDriverFactory() {
+	public DriverFactory getDriverFactory() {
 		return driverFactory;
 	}
 	
