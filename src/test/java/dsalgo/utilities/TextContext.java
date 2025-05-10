@@ -12,7 +12,7 @@ public class TextContext {
 	// Constructor injection for better testability and DI support
 	public TextContext() {
 		this.driverFactory = new DriverFactory();
-		pageObjectManager = new PageObjectManager(driverFactory.getdriver());//initialising pageobjectmanager with driver
+		pageObjectManager = new PageObjectManager(DriverFactory.getdriver());//initialising pageobjectmanager with driver
 	}
 
 	public DriverFactory getDriverFactory() {
