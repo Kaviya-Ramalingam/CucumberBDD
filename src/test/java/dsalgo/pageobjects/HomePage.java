@@ -1,5 +1,8 @@
 package dsalgo.pageobjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +25,9 @@ public class HomePage {
 	
 	@FindBy(xpath = "//a[@class='nav-link dropdown-toggle']")
 	private WebElement DropDownBtn;
+	
+	@FindBy(xpath = "//a[@class='dropdown-item']")
+	private List<WebElement> dropDownOptions;
 
 	@FindBy(xpath = "//a[text()='Arrays']")
 	private WebElement DropDownArray;
@@ -41,6 +47,33 @@ public class HomePage {
 	@FindBy(xpath = "//a[text()='Tree']")
 	private WebElement DropDowntree;
 	
+	@FindBy(xpath ="//div[@class='col']//a")
+	private List<WebElement>getStartedBtns;
+	
+	@FindBy(xpath="//a[@href='data-structures-introduction']")
+	private WebElement getStartedDataStructure;
+	
+	@FindBy(xpath="//a[@href='array']")
+	private WebElement getStartedArray;
+	
+	@FindBy(xpath="//a[@href='linked-list']")
+	private WebElement getStartedLL;
+	
+	@FindBy(xpath="//a[@href='stack']")
+	private WebElement getStartedStack;
+	
+	@FindBy(xpath="//a[@href='tree']")
+	private WebElement getStartedTree;
+	
+	@FindBy(xpath="//a[@href='graph']")
+	private WebElement getStartedGraph;
+	
+	@FindBy(xpath="//a[@href='queue']")
+	private WebElement getStartedQueue;
+
+	@FindBy(xpath="//div[contains(text(),'You are not logged in')]")
+	private WebElement errorMessage;
+	
 	
 	public boolean signInBtnDisplayed() {
 		return signIn.isDisplayed();
@@ -50,6 +83,41 @@ public class HomePage {
 	public boolean RegisterBtnDisplayed() {
 		return Register.isDisplayed();
 		
+	}
+	
+	public void clickDropDownBtn() {
+		DropDownBtn.click();
+	}
+	public List<String> getDropdownOptionsText() {
+	    List<String> optionsText = new ArrayList<>();
+	    for (WebElement option : dropDownOptions) {
+	        optionsText.add(option.getText().trim());
+	    }
+	    return optionsText;
+	}
+	
+	public void selectFromDropdown(String optionText) {
+	    WebElement option = driver.findElement(By.xpath("//a[text()='" + optionText + "']"));
+	    option.click();
+	}
+	
+	public String getErrorMessage() {
+		return errorMessage.getText();
+		
+		
+	}
+	
+	public List<String>getGetStartedText(){
+		List<String> getStartedText = new ArrayList<>();
+		for(WebElement Text:getStartedBtns) {
+			getStartedText.add(Text.getText().trim());
+		}
+		return getStartedText;
+	}
+	
+	public void clickGetStarted(String text) {
+		WebElement getStartedbtn = driver.findElement(By.xpath("//a[@href='" + text + "']"));
+		getStartedbtn.click();
 	}
 
 }

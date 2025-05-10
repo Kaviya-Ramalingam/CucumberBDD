@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(tags = "@DsAlgoPortal_02",features = { "src/test/resources/features" }, 
+@CucumberOptions(tags = "@HomePage_03",features = { "src/test/resources/features" }, 
                  glue = { "dsalgo.stepdefinitions","dsalgo.applicationhooks"},//if hooks are in same package as step definition, 
                  //no need to explicitly add them.or else add package name of hooks 
                  monochrome = true, //formats console output for readability

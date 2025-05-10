@@ -41,10 +41,10 @@ Background:
 
   Examples:
     | Section                  | WarningMessage           |
-    | Data Structures-Introduction | You are not logged in |
-    | Array                    | You are not logged in    |
-    | Linked List              | You are not logged in    |
-    | Stack                    | You are not logged in    |
-    | Queue                    | You are not logged in    |
-    | Tree                     | You are not logged in    |
-    | Graph                    | You are not logged in    |
+    | data-structures-introduction | You are not logged in |
+    | array                    | You are not logged in    |
+    | linked-list              | You are not logged in    |
+    | stack                    | You are not logged in    |
+    | queue                    | You are not logged in    |
+    | tree                     | You are not logged in    |
+    | graph                    | You are not logged in    |
