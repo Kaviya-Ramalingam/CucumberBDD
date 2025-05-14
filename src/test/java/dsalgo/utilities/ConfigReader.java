@@ -12,7 +12,7 @@ public class ConfigReader {
 	private static Properties prop = new Properties();
 
 	public static void ReadDataFromConfig() throws IOException {
-		//instead of giving full path using class leader to load data from file
+		//instead of giving full path using class loader to load data from file
 	    try (InputStream input = ConfigReader.class.getClassLoader()
 	            .getResourceAsStream("properties/config.properties")) {
 	        if (input == null) {

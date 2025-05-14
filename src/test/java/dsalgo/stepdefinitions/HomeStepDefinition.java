@@ -7,32 +7,37 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import dsalgo.pageobjects.HomePage;
-import dsalgo.utilities.TextContext;
+import dsalgo.utilities.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomeStepDefinition {
-	TextContext context;
+	TestContext context;
 	HomePage homePage;
 
-	public HomeStepDefinition(TextContext context) {
+	public HomeStepDefinition(TestContext context) {
 		this.context = context;
 		homePage = context.getPageObjectManager().getHomepage();
 
 	}
+
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeStepDefinition.class);
 
 	@Given("The user is on the Home page")
 	public void the_user_is_on_the_home_page() {
 		
-		logger.info("The user is in the home page");
+		 if (!homePage.isAt()) {
+		        homePage.openPage();
+		    }
+		    Assert.assertTrue(homePage.isAt(), "User is not on the Home page!");
+		    logger.info("The user is on the Home page");
 	}
 
 	@When("The user clicks the Data Structures dropdown")
 	public void the_user_clicks_the_data_structures_dropdown() {
-		
+		                           
 		homePage.clickDropDownBtn();
 		logger.info("user clicks the data structures dropdown");
 	}

@@ -32,7 +32,7 @@ public class Hooks {
 		//driver.get(url);
 		//logger.info("hooks: url opened successfully:" + url);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
 
 	}
 

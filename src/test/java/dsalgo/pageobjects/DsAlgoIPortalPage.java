@@ -5,40 +5,45 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import dsalgo.utilities.ConfigReader;
-
-public class DsAlgoIPortalPage {
-
-	WebDriver driver;
-
-	protected String baseUrl = ConfigReader.getProperty("url");
+public class DsAlgoIPortalPage extends BasePage {
 
 	public DsAlgoIPortalPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(driver, this);
+
 	}
 
 	@FindBy(xpath = "//button[text()='Get Started']")
 	private WebElement GetStartedBtn;
 
 	public String getUrl() {
-		driver.get(baseUrl);
+		goToUrl(baseUrl);
 		return baseUrl;
 
 	}
 
 	public boolean isGetStartedButtonDisplayed() {
-		return GetStartedBtn.isDisplayed();
+		return isDisplayed(GetStartedBtn);
 
 	}
 
 	public String getStartedText() {
-		return GetStartedBtn.getText();
+		return getText(GetStartedBtn);
 
 	}
 
 	public void clickGetStartedBtn() {
-		GetStartedBtn.click();
+		click(GetStartedBtn);
+	}
+
+	@Override
+	public boolean isAt() {
+		return isDisplayed(GetStartedBtn); // or any unique element for this page
+	}
+
+	@Override
+	public void openPage() {
+		goToUrl(baseUrl);
 	}
 
 }
