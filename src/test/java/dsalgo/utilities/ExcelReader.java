@@ -1,12 +1,16 @@
 package dsalgo.utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,79 +20,69 @@ import org.slf4j.LoggerFactory;
 
 public class ExcelReader {
 
-	private static final Logger logger = LoggerFactory.getLogger(ExcelReader.class);
-	FileInputStream fis;// File input stream to read the Excel file
-	public String path;// file path to excel sheet
-	XSSFWorkbook workbook; // Workbook and Sheet objects from Apache POI
-	XSSFSheet sheet;
+	    private static final Logger logger = LoggerFactory.getLogger(ExcelReader.class);
+	    private final String resourceName;
 
-	// Constructor that receives the Excel file path
-	public ExcelReader(String path) {
-		this.path = path;
+	    public ExcelReader(String resourceName) {
+	        this.resourceName = resourceName;
+	    }
+
+	    public Map<String, String> getDataAsMap(String sheetName, String testCaseName) throws IOException {
+	        Map<String, String> dataMap = new LinkedHashMap<>();
+	        DataFormatter formatter = new DataFormatter();
+
+	        try (InputStream path = getClass().getClassLoader().getResourceAsStream(resourceName);
+	             XSSFWorkbook workbook = new XSSFWorkbook(path)) {
+
+	            logger.info("Opened workbook for reading: {}", resourceName);
+
+	            XSSFSheet sheet = workbook.getSheet(sheetName);
+	            if (sheet == null) {
+	                logger.error("Sheet not found: {}", sheetName);
+	                throw new IllegalArgumentException("Sheet not found: " + sheetName);
+	            }
+	            logger.info("Reading from sheet: {}", sheetName);
+
+	            Iterator<Row> rowIterator = sheet.iterator();
+	            if (!rowIterator.hasNext()) {
+	                logger.error("Sheet is empty: {}", sheetName);
+	                throw new IllegalArgumentException("Sheet is empty: " + sheetName);
+	            }
+
+	            // Read header row
+	            Row headerRow = rowIterator.next();
+	            List<String> headers = new ArrayList<>();
+	            for (Cell cell : headerRow) {
+	                headers.add(formatter.formatCellValue(cell));
+	            }
+	            logger.debug("Headers found: {}", headers);
+
+	            boolean found = false;
+	            while (rowIterator.hasNext()) {
+	                Row row = rowIterator.next();
+	                Cell testCaseCell = row.getCell(0);
+
+	                if (testCaseCell != null &&
+	                    formatter.formatCellValue(testCaseCell).equalsIgnoreCase(testCaseName)) {
+
+	                    logger.info("Found matching test case: {}", testCaseName);
+
+	                    for (int i = 0; i < headers.size(); i++) {
+	                        Cell cell = row.getCell(i);
+	                        String value = (cell != null) ? formatter.formatCellValue(cell) : "";
+	                        dataMap.put(headers.get(i), value);
+	                    }
+	                    found = true;
+	                    break;
+	                }
+	            }
+
+	            if (!found) {
+	                logger.warn("Test case '{}' not found in sheet '{}'", testCaseName, sheetName);
+	            } else {
+	                logger.info("Data map for test case '{}': {}", testCaseName, dataMap);
+	            }
+	        }
+	        return dataMap;
+	    }
 	}
-
-	public ArrayList<String> getData(String sheetName, String TestcaseName) throws IOException {
-		// Open the Excel file
-		fis = new FileInputStream(path);
-		workbook = new XSSFWorkbook(fis);
-		int sheets = workbook.getNumberOfSheets();
-
-		// List to store values from the matched row
-		ArrayList<String> data = new ArrayList<String>();
-		logger.debug("Number of sheets in workbook: {}", sheets);
-
-		// Iterate through all sheets in the workbook
-		for (int i = 0; i < sheets; i++) {
-			if (workbook.getSheetName(i).equalsIgnoreCase(sheetName)) { // Check if the current sheet matches the
-																		// requested sheet name
-				logger.info("Reading data from sheet: {}", sheetName);
-				sheet = workbook.getSheetAt(i);
-
-				Iterator<Row> rows = sheet.iterator();
-				Row firstRow = rows.next(); // First row is expected to be the header row
-				Iterator<Cell> cells = firstRow.iterator();
-				int k = 0; // counter to track column index
-				int column = 0; // Will store the index of "testCaseId" column
-
-				// Iterate through header cells to find the "testCaseId" column
-				while (cells.hasNext()) {
-					Cell value = cells.next();
-
-					if (value.getStringCellValue().equalsIgnoreCase("testCaseId")) {
-						column = k;
-						logger.debug("'testCaseId' column found at index {}", column);
-					}
-					k++;
-				}
-				// Look through remaining rows for the given test case ID
-				while (rows.hasNext()) {
-					Row r = rows.next();
-					// Check if this row contains the matching testCaseId
-					if (r.getCell(column).getStringCellValue().equalsIgnoreCase(TestcaseName)) {
-						logger.debug("Found matching test case ID: {}", TestcaseName);
-						// Read all cells in the matched row
-						Iterator<Cell> ce = r.cellIterator();
-						while (ce.hasNext()) {
-							Cell c = ce.next();
-							if (c.getCellType() == CellType.STRING) {
-								data.add(c.getStringCellValue());
-							} else {
-								data.add(NumberToTextConverter.toText(c.getNumericCellValue()));
-							}
-						}
-					} else {
-						logger.warn("Test case ID '{}' not found in row {}", TestcaseName, r.getRowNum());
-					}
-				}
-			}
-		}
-
-		logger.info("Data for TestCaseID: " + TestcaseName);
-		for (String value : data) {
-			System.out.println(value);
-		}
-		return data;
-
-	}
-
-}
