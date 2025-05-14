@@ -9,11 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-	WebDriver driver;
+import dsalgo.utilities.ConfigReader;
 
+public class HomePage extends BasePage {
+	
+	protected String homeUrl = ConfigReader.getProperty("HomePageUrl");
 	public HomePage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(driver, this);
 	}
 
@@ -75,17 +77,20 @@ public class HomePage {
 	private WebElement errorMessage;
 
 	public boolean signInBtnDisplayed() {
-		return signIn.isDisplayed();
+		return isDisplayed(signIn);
 
+	}
+	public void clickSignIn() {
+		click(signIn);
 	}
 
 	public boolean RegisterBtnDisplayed() {
-		return Register.isDisplayed();
+		return isDisplayed(Register);
 
 	}
 
 	public void clickDropDownBtn() {
-		DropDownBtn.click();
+		click(DropDownBtn);
 	}
 
 	public List<String> getDropdownOptionsText() {
@@ -98,11 +103,11 @@ public class HomePage {
 
 	public void selectFromDropdown(String optionText) {
 		WebElement option = driver.findElement(By.xpath("//a[text()='" + optionText + "']"));
-		option.click();
+		click(option);
 	}
 
 	public String getErrorMessage() {
-		return errorMessage.getText();
+		return getText(errorMessage);
 
 	}
 
@@ -116,7 +121,25 @@ public class HomePage {
 
 	public void clickGetStarted(String text) {
 		WebElement getStartedbtn = driver.findElement(By.xpath("//a[@href='" + text + "']"));
-		getStartedbtn.click();
+		click(getStartedbtn);
+	}
+	
+	public void clickRegister() {
+		click(Register);
 	}
 
+	@Override
+	public boolean isAt() {
+		
+		    return getCurrentUrl().equals(homeUrl);
+		}
+	
+
+	@Override
+	public void openPage() {
+		goToUrl(homeUrl);
+		
+	}
+
+	
 }

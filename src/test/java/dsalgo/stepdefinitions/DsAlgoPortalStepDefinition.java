@@ -7,18 +7,18 @@ import org.testng.Assert;
 import dsalgo.driverfactory.DriverFactory;
 import dsalgo.pageobjects.DsAlgoIPortalPage;
 import dsalgo.pageobjects.HomePage;
-import dsalgo.utilities.TextContext;
+import dsalgo.utilities.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class DsAlgoPortalStepDefinition {
-	TextContext context;
+	TestContext context;
 	DsAlgoIPortalPage dsalgoPortalPage;
 	HomePage homePage;
 	private static final Logger logger = LoggerFactory.getLogger(DsAlgoPortalStepDefinition.class);
 
-	public DsAlgoPortalStepDefinition(TextContext context) {
+	public DsAlgoPortalStepDefinition(TestContext context) {
 		this.context = context;
 		dsalgoPortalPage = context.getPageObjectManager().getDsalgoIntroPage();
 		homePage = context.getPageObjectManager().getHomepage();
