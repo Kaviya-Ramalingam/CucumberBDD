@@ -8,6 +8,7 @@ public class PageObjectManager {
     private DsAlgoIPortalPage dsalgoIntroPage;
     private HomePage homePage;
     private RegisterPage registerPage;
+    private LoginPage loginPage;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -32,5 +33,13 @@ public class PageObjectManager {
     		registerPage=new RegisterPage(driver);
     	}
 		return registerPage;
+    }
+    
+    public LoginPage getLoginPage() {
+    	if(loginPage==null) {
+    		loginPage = new LoginPage(driver);
+    	}
+		return loginPage;
+    	
     }
 }
