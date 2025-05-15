@@ -75,6 +75,9 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "//div[contains(text(),'You are not logged in')]")
 	private WebElement errorMessage;
+	
+	@FindBy(xpath = "//a[@href='/logout']")
+	private WebElement logout;
 
 	public boolean signInBtnDisplayed() {
 		return isDisplayed(signIn);
@@ -126,6 +129,10 @@ public class HomePage extends BasePage {
 	
 	public void clickRegister() {
 		click(Register);
+	}
+	
+	public void clickLogout() {
+		click(logout);
 	}
 
 	@Override
