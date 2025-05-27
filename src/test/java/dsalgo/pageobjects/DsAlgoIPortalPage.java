@@ -38,8 +38,8 @@ public class DsAlgoIPortalPage extends BasePage {
 
 	@Override
 	public boolean isAt() {
-		return isDisplayed(GetStartedBtn); // or any unique element for this page
-	}
+		return isDisplayed(GetStartedBtn); 
+		}
 
 	@Override
 	public void openPage() {

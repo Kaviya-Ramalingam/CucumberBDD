@@ -14,7 +14,7 @@ public class TestContext {
 	public TestContext() {
 		   this.testData = new TestData();
 		this.driverFactory = new DriverFactory();
-		pageObjectManager = new PageObjectManager(DriverFactory.getdriver());//initialising pageobjectmanager with driver
+		this.pageObjectManager = new PageObjectManager(DriverFactory.getdriver());//initialising pageobjectmanager with driver
 	}
 
 	public TestData getTestData() {
