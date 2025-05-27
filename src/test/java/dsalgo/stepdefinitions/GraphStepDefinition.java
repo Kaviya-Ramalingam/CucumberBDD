@@ -1,87 +1,75 @@
 package dsalgo.stepdefinitions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
+
+import dsalgo.pageobjects.GraphPage;
+import dsalgo.pageobjects.HomePage;
+import dsalgo.utilities.TestContext;
+import dsalgo.utilities.TestData;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class GraphStepDefinition {
-	
-	@When("The user clicks the {string} link")
-	public void the_user_clicks_the_link(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+
+	private static final Logger logger = LoggerFactory.getLogger(GraphStepDefinition.class);
+	TestContext context;
+	HomePage homePage;
+	TestData testData;
+	GraphPage graphPage;
+
+	public GraphStepDefinition(TestContext context) {
+
+		this.context = context;
+		homePage = context.getPageObjectManager().getHomepage();
+		graphPage = context.getPageObjectManager().getGraphPage();
+		testData = context.getTestData();
 	}
 
-	@Then("The user should be redirected to the {string} page")
-	public void the_user_should_be_redirected_to_the_page(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@When("The user clicks the Graph link")
+	public void the_user_clicks_the_graph_link() {
+		
+		homePage.clickGraph();
+
 	}
 
-	@Given("The user is on the {string} page")
-	public void the_user_is_on_the_page(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("The user should be redirected to the Graph page")
+	public void the_user_should_be_redirected_to_the_graph_page() {
+		
+		Assert.assertTrue(graphPage.isAt());
+		logger.info("user is in graph page");
 	}
 
-	@Then("The user should be redirected to the Try Editor page with a Run button")
-	public void the_user_should_be_redirected_to_the_try_editor_page_with_a_run_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Given("The user is on the Graph page")
+	public void the_user_is_on_the_graph_page() {
+		
+		graphPage.openPage();
+		graphPage.clickGraph();
 	}
 
-	@When("The user clicks the Run button without entering code")
-	public void the_user_clicks_the_run_button_without_entering_code() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@When("The user clicks the Graph Representations link")
+	public void the_user_clicks_the_graph_representations_link() {
+		
+		graphPage.clickGraphRep();
+		logger.info("user is in graph representation page");
 	}
 
-	@Then("The user should see an error message in an alert window")
-	public void the_user_should_see_an_error_message_in_an_alert_window() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("The user should be redirected to Practice Questions of graph")
+	public void the_user_should_be_redirected_to_practice_questions_of_graph() {
+
+		Assert.assertTrue(graphPage.isAtPracticeQuestions(), "User is not at Practice Questions page");
+
 	}
 
-	@When("The user clicks the Run button after entering invalid python code")
-	public void the_user_clicks_the_run_button_after_entering_invalid_python_code() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("The user should be redirected to the Graph Representations page")
+	public void the_user_should_be_redirected_to_the_graph_representations_page() {
+
 	}
 
-	@When("The user clicks the Run button after entering valid python code")
-	public void the_user_clicks_the_run_button_after_entering_valid_python_code() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
+	@When("The user clicks the Graph Representations page")
+	public void the_user_clicks_the_graph_representations_page() {
 
-	@Then("The user should see the output in the console")
-	public void the_user_should_see_the_output_in_the_console() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
 	}
-
-	@When("The user should be redirected to the Practice Questions page")
-	public void the_user_should_be_redirected_to_the_practice_questions_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("The Practice Questions page should be blank")
-	public void the_practice_questions_page_should_be_blank() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@When("The user clicks the {string} page")
-	public void the_user_clicks_the_page(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("The user should be redirected to the blank Practice page")
-	public void the_user_should_be_redirected_to_the_blank_practice_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
 }

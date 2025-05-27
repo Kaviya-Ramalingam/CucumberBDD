@@ -9,6 +9,8 @@ public class PageObjectManager {
     private HomePage homePage;
     private RegisterPage registerPage;
     private LoginPage loginPage;
+    private DataStructuresPage dataStructuresPage;
+    private GraphPage graphPage;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -41,5 +43,20 @@ public class PageObjectManager {
     	}
 		return loginPage;
     	
+    }
+    
+    public DataStructuresPage getDataStructuresPage() {
+    	if(dataStructuresPage==null) {
+    		dataStructuresPage = new DataStructuresPage(driver);
+    	}
+		return dataStructuresPage;
+    	
+    }
+    
+    public GraphPage getGraphPage() {
+    	if(graphPage == null) {
+    		graphPage = new GraphPage(driver);
+    	}
+		return graphPage;
     }
 }
