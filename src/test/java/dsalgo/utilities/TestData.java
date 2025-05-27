@@ -10,10 +10,13 @@ public class TestData {
 	static ExcelReader reader = new ExcelReader("DsAlgoTestData.xlsx");
 	static Map<String, String> RegisterData;
 	static Map<String,String> LoginData;
+	static Map<String,String> DataStructuresData;
 	static String username;
 	static String password;
     static String confirmPassword;
 	static String expectedMesg;
+	static String pythonCode;
+	static String runResult;
 
 	public Map<String, String> getRegisterData(String sheetName, String testCaseName) throws IOException {
 
@@ -37,5 +40,17 @@ public class TestData {
 		return LoginData;
 		
 	}
+	
+	public Map<String,String>getDataStructuresData(String sheetName,String testCaseName) throws IOException{
+		
+		DataStructuresData = reader.getDataAsMap(sheetName, testCaseName);
+		pythonCode = DataStructuresData.get("PyCode");
+		runResult = DataStructuresData.get("RunResult");
+		System.out.println("####DataStructuresData" +DataStructuresData);
+		return DataStructuresData;
+		
+	}
+	
+	
 
 }

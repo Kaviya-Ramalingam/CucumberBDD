@@ -21,6 +21,10 @@ public class DriverFactory {
 		return driverThreadLocal.get();
 
 	}
+	public static void setBrowserName(String browser) {
+		browserNameThreadLocal.set(browser);
+		
+	}
 
 	public static String getBrowserName() {
 		return browserNameThreadLocal.get();
@@ -28,15 +32,19 @@ public class DriverFactory {
 
 	public static WebDriver browserSetup(String browser) {
 		// Store the browser name for this thread
-		browserNameThreadLocal.set(browser);
-
+	//	browserNameThreadLocal.set(browser);
+		if (browser == null) {
+	        System.out.println("No browser specified. Defaulting to Chrome...");
+	        browser = "chrome";
+	    }
+		
 		switch (browser.toLowerCase()) {
 
 		case "chrome":
-		default:
+		//default:
 			ChromeOptions co = new ChromeOptions();
 			co.addArguments("--headless");
-			driverThreadLocal.set(new ChromeDriver());
+			driverThreadLocal.set(new ChromeDriver(co));
 			break;
 
 		case "firefox":
@@ -58,8 +66,12 @@ public class DriverFactory {
 		WebDriver driver = driverThreadLocal.get();
 		if (driver != null) {
 			driver.quit();
-			driverThreadLocal.remove();
+			 driverThreadLocal.remove();
 		}
+		
+	}
+	public static void cleanUpBrowser() {
 		browserNameThreadLocal.remove();
 	}
+	
 }

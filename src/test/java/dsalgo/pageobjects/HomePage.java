@@ -147,6 +147,14 @@ public class HomePage extends BasePage {
 		goToUrl(homeUrl);
 		
 	}
+	
+	public void clickGetStartedDataStructures() {
+		click(getStartedDataStructure);
+	}
+	
+	public void clickGraph() {
+		click(getStartedGraph);
+	}
 
 	
 }

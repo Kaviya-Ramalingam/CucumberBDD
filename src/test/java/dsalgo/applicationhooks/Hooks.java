@@ -1,7 +1,6 @@
 package dsalgo.applicationhooks;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -16,29 +15,27 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 public class Hooks {
-	private static WebDriver driver;
+
 	private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
 
 	@Before
-	public static void initialization() throws IOException {
-
+	public void initialization(Scenario scenario) throws IOException {
+	
+		logger.info("------Thread ID in @Before: {}", Thread.currentThread().getId());
+		logger.info(scenario.getSourceTagNames() + " : " + scenario.getName());
 		ConfigReader.ReadDataFromConfig();
-		String browser = ConfigReader.getProperty("browser");
-		//String url = ConfigReader.getProperty("url");
+		String browser = DriverFactory.getBrowserName();// to read from testng.xml file
 		DriverFactory.browserSetup(browser);
-		logger.info("Hook: Initializing driver for browser :" + browser);
+	    logger.info("Hook: Initializing driver for browser :" + browser);
 
-		driver = DriverFactory.getdriver();
-		//driver.get(url);
-		//logger.info("hooks: url opened successfully:" + url);
+		WebDriver driver = DriverFactory.getdriver();
 		driver.manage().window().maximize();
-		
 
 	}
 
 	@After
-	public static void tearDown(Scenario scenario) {
-
+	public void tearDown(Scenario scenario) {
+		WebDriver driver = DriverFactory.getdriver();
 		if (driver != null && scenario.isFailed()) {
 			final byte screenshot[] = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(screenshot, "image/png", "image");// This will attach screenshot to html report
@@ -47,6 +44,7 @@ public class Hooks {
 		logger.info("Closing driver from hook's teardown method...");
 
 		DriverFactory.cleanupDriver();
+		logger.info("---------------------------------------------------------------------------");
 
 	}
 
