@@ -31,8 +31,7 @@ public class DriverFactory {
 	}
 
 	public static WebDriver browserSetup(String browser) {
-		// Store the browser name for this thread
-	//	browserNameThreadLocal.set(browser);
+	
 		if (browser == null) {
 	        System.out.println("No browser specified. Defaulting to Chrome...");
 	        browser = "chrome";
@@ -41,7 +40,7 @@ public class DriverFactory {
 		switch (browser.toLowerCase()) {
 
 		case "chrome":
-		//default:
+		
 			ChromeOptions co = new ChromeOptions();
 			co.addArguments("--headless");
 			driverThreadLocal.set(new ChromeDriver(co));

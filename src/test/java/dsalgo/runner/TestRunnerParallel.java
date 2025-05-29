@@ -22,7 +22,9 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = !true, // formats console output for readability
 		dryRun = false, // checks unimplemented steps
 		plugin = { "pretty", "html:target/cucumber-reports/reportsparallel.html",
-				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" })
+				"json:target/cucumber-reports/CucumberParallel.json",
+				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm","rerun:target/failed_scenarios.txt",
+				 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"  })
 
 public class TestRunnerParallel extends AbstractTestNGCucumberTests {
 	private static final Logger logger = LoggerFactory.getLogger(TestRunnerParallel.class);
