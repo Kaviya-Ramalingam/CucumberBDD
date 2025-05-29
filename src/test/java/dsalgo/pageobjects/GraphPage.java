@@ -19,10 +19,10 @@ public class GraphPage extends BasePage {
 
 
 	@FindBy(xpath="//a[@href='graph']")
-	WebElement graph;
+	private WebElement graph;
 	
 	@FindBy(xpath="//a[text()='Graph Representations']")
-	WebElement graphRepresentation;
+	private WebElement graphRepresentation;
 	
 	
 	

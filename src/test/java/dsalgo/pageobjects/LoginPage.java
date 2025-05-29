@@ -20,13 +20,13 @@ public class LoginPage extends BasePage{
 	}
 	
 	@FindBy(xpath="//input[@type='submit']")
-	WebElement login;
+	private WebElement login;
 	@FindBy(xpath = "//input[@id='id_username']")
-	WebElement username;
+	private WebElement username;
 	@FindBy(xpath = "//input[@id='id_password']")
-	WebElement password;
+	private WebElement password;
 	@FindBy(xpath = "//div[@class='alert alert-primary']")
-	WebElement alertMesg;
+	private WebElement alertMesg;
 
 	@Override
 	public boolean isAt() {

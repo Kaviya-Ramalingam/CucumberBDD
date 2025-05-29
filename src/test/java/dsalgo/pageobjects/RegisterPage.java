@@ -18,17 +18,17 @@ public class RegisterPage extends BasePage {
 	}
 
 	@FindBy(xpath = "//input[@type='submit']")
-	WebElement registerBtn;
+	private WebElement registerBtn;
 	@FindBy(xpath = "//input[@id='id_username']")
-	WebElement username;
+	private WebElement username;
 	@FindBy(xpath = "//input[@id='id_password1']")
-	WebElement password;
+	private WebElement password;
 	@FindBy(xpath = "//input[@id='id_password2']")
-	WebElement confirmPassword;
+	private WebElement confirmPassword;
 	@FindBy(xpath = "//div[@class='alert alert-primary']")
-	WebElement alertMesg;
+	private WebElement alertMesg;
 	@FindBy(xpath = "//a[text()='Sign out']")
-	WebElement signOut;
+	private WebElement signOut;
 
 	@Override
 	public boolean isAt() {

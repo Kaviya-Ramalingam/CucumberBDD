@@ -57,19 +57,6 @@ public abstract class BasePage {
 		}
 	}
 
-	public void ScrolltoElementandClick(WebElement element) {
-
-		try {
-			wait.until(ExpectedConditions.visibilityOf(element));
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-			Actions action = new Actions(this.driver);
-			action.moveToElement(element).click().perform();
-		} catch (Exception e) {
-			logger.error("actionScrolltoElement::The element " + element.toString()
-					+ " may not scrolled to element. Exception is: " + e.getMessage());
-		}
-
-	}
 
 	public void sendInput(WebElement element, String textToBeTyped) {
 		try {
