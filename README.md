@@ -10,7 +10,7 @@ This repository provides a Behavior-Driven Development (BDD) automation framewor
 - **Parallel Test Execution**: Achieved using TestNG. Run tests concurrently to save time.
 - **Cross-Browser Testing**: Easily switch and run tests on different browsers (Chrome, Firefox, etc.) by configuring parameters in `testng.xml`.
 - **PicoContainer**: Dependency injection is implemented using PicoContainer, enabling clean sharing of objects and context between step definitions.
-- **Page Object Model (optional)**: For scalable UI automation (if applicable).
+- **Page Object Model **: For scalable UI automation.
 - **Reusable steps and hooks** for setup and teardown.
 - **Detailed reports**: Integrate with plugins for HTML/JSON reporting.
 
