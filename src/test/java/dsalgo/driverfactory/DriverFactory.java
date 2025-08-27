@@ -18,11 +18,11 @@ public class DriverFactory {
 	private static ThreadLocal<String> browserNameThreadLocal = new ThreadLocal<>();
 
 	public static WebDriver getdriver() {
-		return driverThreadLocal.get();
+		return driverThreadLocal.get();// Returns the WebDriver instance for the current thread
 
 	}
 	public static void setBrowserName(String browser) {
-		browserNameThreadLocal.set(browser);
+		browserNameThreadLocal.set(browser);// Returns "chrome", "firefox", etc., for the current thread
 		
 	}
 

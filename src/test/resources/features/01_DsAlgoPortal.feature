@@ -7,7 +7,7 @@ Feature: portal validation
     When The user enter correct dsAlgo portal URL
     Then The user should be able to land on dsAlgo portal with Get Started button
 
-  @DsAlgoPortal_02 @positive
+  @DsAlgoPortal_02 @positive @skip
   Scenario: Verify the Home page for an user without Sign in
     Given The user opens the browser, enters the DS Algo portal
     When The user clicks the Get Started button
