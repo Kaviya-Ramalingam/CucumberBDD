@@ -1,35 +1,34 @@
 pipeline {
     agent any
+    
     stages {
-        stage('build') {
+        stage('Checkout') {
             steps {
-                echo 'Pre-build'
+                checkout scm
             }
         }
-        stage('Unit tests') {
+
+        stage('Build & Test') {
             steps {
-                echo 'Running unit tests'
+                echo 'Building project & running all tests...'
+                sh 'mvn clean test'
+                // or use 'mvn clean verify' if cucumber reports are generated there
             }
-        }
-        stage('deploy') {
-            steps {
-                echo 'Deploying build'
-            }
-        }
-        stage('Regression tests') {
-            steps {
-                echo 'Running E2E tests'
-            }
-        }
-        stage('Release to prod') {
-            steps {
-                echo 'Releasing to prod'
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                    junit '**/target/cucumber-reports/*.xml'
+                }
             }
         }
     }
+
     post {
-        always {
-            echo 'Cleanup after everything!'
+        success {
+            echo ' All tests passed!'
+        }
+        failure {
+            echo 'Some tests failed. Check reports in Jenkins.'
         }
     }
 }
