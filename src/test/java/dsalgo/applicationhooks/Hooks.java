@@ -55,9 +55,9 @@ public class Hooks {
 
                     // 3. Set in ThreadLocal for Jira usage
                     screenshotPath.set(fullPath);
-                    System.out.println("📸 Screenshot saved at: " + fullPath);
+                    System.out.println("Screenshot saved at: " + fullPath);
                 } catch (IOException e) {
-                    System.err.println("❌ Failed to save screenshot file: " + e.getMessage());
+                    System.err.println("Failed to save screenshot file: " + e.getMessage());
                 }
             }
 
