@@ -11,7 +11,9 @@ pipeline {
         stage('Build & Test') {
             steps {
                 echo 'Building project & running all tests...'
-                sh 'mvn clean test'
+                sh '''#!/bin/bash
+        mvn clean test
+        '''
                 // or use 'mvn clean verify' if cucumber reports are generated there
             }
             post {
